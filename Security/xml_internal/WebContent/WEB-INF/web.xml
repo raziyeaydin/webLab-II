@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" version="2.4">
+  <login-config>
+    <auth-method>BASIC</auth-method>
+    <realm-name>Hot-Dot-Com Intranet</realm-name>
+  </login-config>
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>Financial Plan</web-resource-name>
+      <url-pattern>/financialPlan.html</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>employee</role-name>
+      <role-name>executive</role-name>
+    </auth-constraint>
+  </security-constraint>
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>Business Plan</web-resource-name>
+      <url-pattern>/businessPlan.html</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>executive</role-name>
+    </auth-constraint>
+  </security-constraint>
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>Compensation Plan</web-resource-name>
+      <url-pattern>/employeePay.jsp</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>employee</role-name>
+      <role-name>executive</role-name>
+    </auth-constraint>
+  </security-constraint>
+  <security-role>
+    <role-name>employee</role-name>
+  </security-role>
+  <security-role>
+    <role-name>executive</role-name>
+  </security-role>
+  <servlet>
+    <servlet-name>Redirector</servlet-name>
+    <servlet-class>hdci.RedirectorServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Redirector</servlet-name>
+    <url-pattern>/servlet/*</url-pattern>
+  </servlet-mapping>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+   
+</web-app>
